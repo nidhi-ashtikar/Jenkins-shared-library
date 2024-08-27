@@ -21,6 +21,7 @@
 
 def call() {
     // Access parameters
+    def env = params.env
     def region = params.region
     def vpcName = params.vpc_name
     def vpcCidrBlock = params.vpc_cidr_block
@@ -33,6 +34,7 @@ def call() {
     // Debug output to check parameter values
     echo "AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}"
     echo "AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}"
+    echo "env=${env}"
     echo "region=${region}"
     echo "vpc_name=${vpcName}"
     echo "vpc_cidr_block=${vpcCidrBlock}"
@@ -49,6 +51,7 @@ def call() {
     ]) {
         sh """
         terraform plan -out=${env.PLAN_FILE} \
+        -var 'env=${env}' \
         -var 'region=${region}' \
         -var 'vpc_name=${vpcName}' \
         -var 'vpc_cidr_block=${vpcCidrBlock}' \
