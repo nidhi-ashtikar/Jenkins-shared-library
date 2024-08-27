@@ -14,7 +14,7 @@ def call () {
                 -var 'private-subnet-cidr-1=${params.private-subnet-cidr-1}' \
                 -var 'private-subnet-cidr-2=${params.private-subnet-cidr-2}' | tee ${env.PLAN_OUTPUT_FILE}
                 """
-            }
+            
     
 }
 
