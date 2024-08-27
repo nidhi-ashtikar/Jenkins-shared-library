@@ -1,6 +1,4 @@
 def call () {
-    {
-        sh 'terraform init'
-    }
+            sh 'terraform init'
 }
 
