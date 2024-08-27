@@ -1,5 +1,5 @@
 def call () {
-    def branchName = "${params.instance_name}-terraform-plan-branch"
+    def branchName = "${params.resource_name}-terraform-plan-branch"
     sh """
     git config user.name "${env.GIT_USER_NAME}"
     git config user.email "${env.GIT_USER_EMAIL}"
