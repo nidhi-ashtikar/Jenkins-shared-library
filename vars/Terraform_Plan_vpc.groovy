@@ -20,16 +20,17 @@
 
 
 def call() {
-    // Ensure parameters are correctly passed
+    // Access parameters
     def region = params.region
     def vpcName = params.vpc_name
     def vpcCidrBlock = params.vpc_cidr_block
     def additionalTags = params.additional_tags
-    def publicSubnetCidr1 = params.public-subnet-cidr-1
-    def publicSubnetCidr2 = params.public-subnet-cidr-2
-    def privateSubnetCidr1 = params.private-subnet-cidr-1
-    def privateSubnetCidr2 = params.private-subnet-cidr-2
+    def publicSubnetCidr1 = params['public-subnet-cidr-1']
+    def publicSubnetCidr2 = params['public-subnet-cidr-2']
+    def privateSubnetCidr1 = params['private-subnet-cidr-1']
+    def privateSubnetCidr2 = params['private-subnet-cidr-2']
 
+    // Debug output to check parameter values
     echo "AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}"
     echo "AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}"
     echo "region=${region}"
@@ -41,6 +42,7 @@ def call() {
     echo "private-subnet-cidr-1=${privateSubnetCidr1}"
     echo "private-subnet-cidr-2=${privateSubnetCidr2}"
 
+    // Execute Terraform plan
     withEnv([
         "AWS_ACCESS_KEY_ID=${params.AWS_ACCESS_KEY_ID}",
         "AWS_SECRET_ACCESS_KEY=${params.AWS_SECRET_ACCESS_KEY}"
