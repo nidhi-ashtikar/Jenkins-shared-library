@@ -1,4 +1,4 @@
-def call () {
+def call () 
              {
                 sh """
                 terraform plan -out=${env.PLAN_FILE} \
